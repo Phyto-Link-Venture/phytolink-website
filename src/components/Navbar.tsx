@@ -27,6 +27,9 @@ export default function Navbar() {
             <Link href="/invoice-system" className="text-gray-700 hover:text-green-600 transition">
               Invoice System
             </Link>
+            <Link href="/ai-automation" className="text-gray-700 hover:text-green-600 transition">
+              AI Automation
+            </Link>
             <Link href="/iot-system" className="text-gray-700 hover:text-green-600 transition">
               IoT System
             </Link>
@@ -71,6 +74,7 @@ export default function Navbar() {
           <div className="px-4 pt-2 pb-4 space-y-2">
             <Link href="/" className="block py-2 text-gray-700 hover:text-green-600">Home</Link>
             <Link href="/invoice-system" className="block py-2 text-gray-700 hover:text-green-600">Invoice System</Link>
+            <Link href="/ai-automation" className="block py-2 text-gray-700 hover:text-green-600">AI Automation</Link>
             <Link href="/iot-system" className="block py-2 text-gray-700 hover:text-green-600">IoT System</Link>
             <Link href="/tools" className="block py-2 text-gray-700 hover:text-green-600">Tools</Link>
             <Link href="/pricing" className="block py-2 text-gray-700 hover:text-green-600">Pricing</Link>

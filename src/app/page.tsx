@@ -210,6 +210,93 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* AI Automation Service */}
+          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 md:p-12 mt-8">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="inline-block bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  🤖 NEW — AI Automation
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                  AI Automation Service
+                </h3>
+                <p className="text-lg text-gray-600 mb-6">
+                  Your 24/7 AI assistant that handles <strong>WhatsApp replies, email organization, 
+                  receipt capture, and automated reports</strong>. Save 10+ hours per week.
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center text-gray-700">
+                    <span className="text-indigo-500 mr-3">✅</span>
+                    WhatsApp Auto-Reply 24/7
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <span className="text-indigo-500 mr-3">✅</span>
+                    Smart Email Organization
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <span className="text-indigo-500 mr-3">✅</span>
+                    Receipt Capture & Expense Tracking
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <span className="text-indigo-500 mr-3">✅</span>
+                    Automated Daily/Weekly Reports
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <span className="text-indigo-500 mr-3">✅</span>
+                    100% Private — Your Own Server
+                  </li>
+                </ul>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    href="/ai-automation"
+                    className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition text-center"
+                  >
+                    Learn More
+                  </Link>
+                  <a 
+                    href="https://wa.me/601133199692?text=Hi%2C%20I%27m%20interested%20in%20AI%20Automation%20Service"
+                    className="border-2 border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition text-center"
+                  >
+                    WhatsApp Us
+                  </a>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-xl p-6">
+                <div className="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg p-6 mb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm text-gray-600">AI Assistant Status</span>
+                    <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Active 24/7</span>
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-2">47 Tasks Today</div>
+                  <div className="text-sm text-gray-600">12 WhatsApp replies • 28 emails sorted • 7 receipts captured</div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <span className="text-lg mr-3">💬</span>
+                      <span className="text-sm text-gray-700">Customer inquiry replied</span>
+                    </div>
+                    <span className="text-xs text-gray-500">2 min ago</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <span className="text-lg mr-3">🧾</span>
+                      <span className="text-sm text-gray-700">Receipt captured: RM 245.00</span>
+                    </div>
+                    <span className="text-xs text-gray-500">15 min ago</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center">
+                      <span className="text-lg mr-3">📊</span>
+                      <span className="text-sm text-gray-700">Daily report generated</span>
+                    </div>
+                    <span className="text-xs text-gray-500">1 hr ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

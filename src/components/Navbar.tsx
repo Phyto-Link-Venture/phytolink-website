@@ -24,20 +24,14 @@ export default function Navbar() {
             <Link href="/" className="text-gray-700 hover:text-green-600 transition">
               Home
             </Link>
-            <Link href="/invoice-system" className="text-gray-700 hover:text-green-600 transition">
-              Invoice System
-            </Link>
-            <Link href="/ai-automation" className="text-gray-700 hover:text-green-600 transition">
-              AI Automation
+            <Link href="/chatbranch" className="text-gray-700 hover:text-green-600 transition">
+              ChatBranch
             </Link>
             <Link href="/iot-system" className="text-gray-700 hover:text-green-600 transition">
               IoT System
             </Link>
             <Link href="/tools" className="text-gray-700 hover:text-green-600 transition">
               Tools
-            </Link>
-            <Link href="/pricing" className="text-gray-700 hover:text-green-600 transition">
-              Pricing
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-green-600 transition">
               Contact
@@ -46,7 +40,7 @@ export default function Navbar() {
               href="/signup" 
               className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
             >
-              Start Free Trial
+              Get Started
             </Link>
           </div>
 
@@ -55,6 +49,8 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-green-600"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
@@ -71,16 +67,14 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t">
-          <div className="px-4 pt-2 pb-4 space-y-2">
+          <div className="px-4 pt-2 pb-4 space-y-2" onClick={() => setIsOpen(false)}>
             <Link href="/" className="block py-2 text-gray-700 hover:text-green-600">Home</Link>
-            <Link href="/invoice-system" className="block py-2 text-gray-700 hover:text-green-600">Invoice System</Link>
-            <Link href="/ai-automation" className="block py-2 text-gray-700 hover:text-green-600">AI Automation</Link>
+            <Link href="/chatbranch" className="block py-2 text-gray-700 hover:text-green-600">ChatBranch</Link>
             <Link href="/iot-system" className="block py-2 text-gray-700 hover:text-green-600">IoT System</Link>
             <Link href="/tools" className="block py-2 text-gray-700 hover:text-green-600">Tools</Link>
-            <Link href="/pricing" className="block py-2 text-gray-700 hover:text-green-600">Pricing</Link>
             <Link href="/contact" className="block py-2 text-gray-700 hover:text-green-600">Contact</Link>
             <Link href="/signup" className="block py-2 bg-green-600 text-white text-center rounded-lg">
-              Start Free Trial
+              Get Started
             </Link>
           </div>
         </div>

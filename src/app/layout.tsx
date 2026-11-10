@@ -7,8 +7,14 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://phytolink-venture.com"),
   title: "Phyto Link Venture - Business Solutions",
-  description: "Professional business solutions including Invoice Management System with LHDN e-Invoice integration for Malaysian businesses.",
+  description: "Business software built in Malaysia: ChatBranch, the multi-channel inbox with an AI that answers your customers on WhatsApp, email and social, plus IoT monitoring.",
+  openGraph: {
+    siteName: "Phyto Link Venture",
+    locale: "en_MY",
+    type: "website",
+  },
   icons: { icon: "/logo.jpg", apple: "/logo.jpg" },
 };
 

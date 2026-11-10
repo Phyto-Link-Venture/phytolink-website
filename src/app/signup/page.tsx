@@ -9,7 +9,7 @@ export default function SignupPage() {
     email: "",
     companyName: "",
     phone: "",
-    plan: "business",
+    interest: "chatbranch",
     otp: "",
   });
 
@@ -25,14 +25,8 @@ export default function SignupPage() {
 
   const handleSubmitStep2 = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Verify OTP
+    // TODO: Verify OTP and create the account request
     setStep(3);
-  };
-
-  const handleSubmitStep3 = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Create account (Stripe integration will go here)
-    setStep(4);
   };
 
   return (
@@ -45,9 +39,7 @@ export default function SignupPage() {
             <div className={`w-16 h-1 ${step >= 2 ? 'bg-green-600' : 'bg-gray-200'}`}></div>
             <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'}`}>2</div>
             <div className={`w-16 h-1 ${step >= 3 ? 'bg-green-600' : 'bg-gray-200'}`}></div>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'}`}>3</div>
-            <div className={`w-16 h-1 ${step >= 4 ? 'bg-green-600' : 'bg-gray-200'}`}></div>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 4 ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'}`}>✓</div>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'}`}>✓</div>
           </div>
         </div>
 
@@ -55,7 +47,7 @@ export default function SignupPage() {
         {step === 1 && (
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Create Your Account</h2>
-            <p className="text-gray-600 mb-6">Start your 14-day free trial</p>
+            <p className="text-gray-600 mb-6">Tell us about your business and we&apos;ll set up your workspace</p>
 
             <form onSubmit={handleSubmitStep1} className="space-y-4">
               <div>
@@ -98,16 +90,16 @@ export default function SignupPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Select Plan</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">I&apos;m interested in</label>
                 <select
-                  name="plan"
-                  value={formData.plan}
+                  name="interest"
+                  value={formData.interest}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                 >
-                  <option value="starter">Starter - RM79/month</option>
-                  <option value="business">Business - RM149/month (Popular)</option>
-                  <option value="professional">Professional - RM299/month</option>
+                  <option value="chatbranch">ChatBranch (inbox &amp; AI)</option>
+                  <option value="iot">IoT System</option>
+                  <option value="other">Something else / custom solution</option>
                 </select>
               </div>
 
@@ -117,13 +109,20 @@ export default function SignupPage() {
               >
                 Continue →
               </button>
+
+              <p className="text-center text-gray-500 text-xs">
+                By signing up you agree to our{" "}
+                <Link href="/terms" className="text-green-600 hover:underline">Terms &amp; Conditions</Link>{" "}
+                and{" "}
+                <Link href="/privacy" className="text-green-600 hover:underline">Privacy Policy</Link>.
+              </p>
             </form>
 
             <p className="text-center text-gray-500 text-sm mt-6">
-              Already have an account?{" "}
-              <Link href="/login" className="text-green-600 hover:underline">
+              Already have a ChatBranch account?{" "}
+              <a href="https://chatbranch.phytolink-venture.com" className="text-green-600 hover:underline">
                 Sign in
-              </Link>
+              </a>
             </p>
           </div>
         )}
@@ -133,7 +132,7 @@ export default function SignupPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Verify Your Email</h2>
             <p className="text-gray-600 mb-6">
-              We've sent a 6-digit code to <strong>{formData.email}</strong>
+              We&apos;ve sent a 6-digit code to <strong>{formData.email}</strong>
             </p>
 
             <form onSubmit={handleSubmitStep2} className="space-y-4">
@@ -160,7 +159,7 @@ export default function SignupPage() {
             </form>
 
             <p className="text-center text-gray-500 text-sm mt-6">
-              Didn't receive the code?{" "}
+              Didn&apos;t receive the code?{" "}
               <button className="text-green-600 hover:underline">
                 Resend
               </button>
@@ -175,106 +174,26 @@ export default function SignupPage() {
           </div>
         )}
 
-        {/* Step 3: Payment (Credit Card) */}
+        {/* Step 3: Success */}
         {step === 3 && (
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment Details</h2>
-            <p className="text-gray-600 mb-6">
-              You won't be charged during your 14-day free trial
-            </p>
-
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-              <p className="text-green-800 text-sm">
-                ✨ Your card will only be charged after the trial ends. Cancel anytime before to avoid charges.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmitStep3} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-                <input
-                  type="text"
-                  placeholder="1234 5678 9012 3456"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
-                  <input
-                    type="text"
-                    placeholder="MM/YY"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
-                  <input
-                    type="text"
-                    placeholder="123"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-              >
-                Start Free Trial →
-              </button>
-            </form>
-
-            <div className="flex items-center justify-center gap-4 mt-6 text-gray-400">
-              <span>🔒 Secured by</span>
-              <span className="font-semibold">Stripe</span>
-            </div>
-
-            <button 
-              onClick={() => setStep(2)}
-              className="w-full text-gray-500 mt-4 hover:text-gray-700"
-            >
-              ← Back
-            </button>
-          </div>
-        )}
-
-        {/* Step 4: Success */}
-        {step === 4 && (
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
             <div className="text-6xl mb-4">🎉</div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Aboard!</h2>
             <p className="text-gray-600 mb-6">
-              Your account has been created successfully. We're setting up your invoice system...
+              Thanks, {formData.companyName || "there"}! Our team will get back to you within 24 hours
+              to set up your workspace and walk you through it.
             </p>
-
-            <div className="bg-gray-50 rounded-lg p-6 mb-6 text-left">
-              <p className="text-sm text-gray-500 mb-2">Your Dashboard URL:</p>
-              <p className="font-mono text-green-600 font-semibold">
-                {formData.companyName.toLowerCase().replace(/\s+/g, '-')}.invoice.phytolink.com
-              </p>
-            </div>
 
             <div className="space-y-4">
               <p className="text-gray-600 text-sm">
-                📧 Check your email for login credentials and next steps.
+                📧 We&apos;ll email your sign-in details once your workspace is ready.
               </p>
 
               <Link
-                href="#"
+                href="/chatbranch"
                 className="block w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
               >
-                Go to Dashboard →
+                Explore ChatBranch →
               </Link>
             </div>
 
@@ -285,13 +204,13 @@ export default function SignupPage() {
         )}
 
         {/* Trust badges */}
-        {step !== 4 && (
+        {step !== 3 && (
           <div className="mt-8 text-center">
             <p className="text-gray-500 text-sm mb-4">Trusted by Malaysian businesses</p>
             <div className="flex justify-center gap-6 text-gray-400">
               <span>🔒 SSL Secured</span>
               <span>🇲🇾 Malaysia</span>
-              <span>💳 Stripe</span>
+              <span>💬 Local support</span>
             </div>
           </div>
         )}

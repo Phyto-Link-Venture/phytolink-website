@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-xl text-green-100">
-            We're here to help. Get in touch with our team.
+            We&apos;re here to help. Get in touch with our team.
           </p>
         </div>
       </section>
@@ -93,15 +94,15 @@ export default function ContactPage() {
               <div className="mt-12">
                 <h3 className="font-semibold text-gray-900 mb-4">Quick Answers</h3>
                 <div className="space-y-2">
-                  <a href="/pricing#faq" className="block text-green-600 hover:underline">
-                    → Pricing FAQ
-                  </a>
-                  <a href="/invoice-system" className="block text-green-600 hover:underline">
-                    → Product Features
-                  </a>
-                  <a href="/signup" className="block text-green-600 hover:underline">
-                    → Start Free Trial
-                  </a>
+                  <Link href="/chatbranch" className="block text-green-600 hover:underline">
+                    → ChatBranch Features
+                  </Link>
+                  <Link href="/chatbranch/updates" className="block text-green-600 hover:underline">
+                    → What&apos;s New in ChatBranch
+                  </Link>
+                  <Link href="/privacy#data-deletion" className="block text-green-600 hover:underline">
+                    → Delete My Data
+                  </Link>
                 </div>
               </div>
             </div>
@@ -210,7 +211,7 @@ export default function ContactPage() {
                   <div className="text-6xl mb-4">✅</div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h2>
                   <p className="text-gray-600 mb-6">
-                    Thank you for reaching out. We'll get back to you within 24 hours.
+                    Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                   </p>
                   <button
                     onClick={() => {
@@ -239,17 +240,17 @@ export default function ContactPage() {
       <section className="py-16 bg-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Ready to try our Invoice System?
+            Curious about ChatBranch?
           </h2>
           <p className="text-gray-600 mb-6">
-            Start your 14-day free trial today. No credit card required.
+            See how one inbox and one AI can answer your customers on every channel.
           </p>
-          <a
-            href="/signup"
+          <Link
+            href="/chatbranch"
             className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
           >
-            Start Free Trial
-          </a>
+            Explore ChatBranch
+          </Link>
         </div>
       </section>
     </div>

@@ -376,7 +376,7 @@ export default function IoTSystemPage() {
             </Link>
           </div>
           <p className="mt-6 text-purple-200">
-            We'll reach out to discuss your IoT needs and how we can help
+            We&apos;ll reach out to discuss your IoT needs and how we can help
           </p>
         </div>
       </section>

@@ -69,7 +69,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
           <p>© {new Date().getFullYear()} Phyto Link Venture. All rights reserved.</p>
           <p className="mt-2 text-sm">
-            SSM Registration: [Company registration no.] | Based in Malaysia 🇲🇾
+            SSM Registration: 202503038465 (TR0316513-W) | Based in Malaysia 🇲🇾
           </p>
         </div>
       </div>

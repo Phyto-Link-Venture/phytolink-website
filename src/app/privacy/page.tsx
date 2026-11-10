@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import LegalPage, { Placeholder, type LegalSection } from "@/components/legal/LegalPage";
+import LegalPage, { type LegalSection } from "@/components/legal/LegalPage";
 
 const EFFECTIVE_DATE = "10 November 2026";
 const EMAIL = "phytolinkventure@gmail.com";
@@ -25,8 +25,8 @@ const sections: LegalSection[] = [
       <>
         <p>
           This Privacy Policy is issued by <strong>Phyto Link Venture</strong> (SSM registration no.{" "}
-          <Placeholder>[Company registration no.]</Placeholder>), a business registered in Malaysia with
-          its address at <Placeholder>[Registered business address]</Placeholder> (&quot;Phyto Link
+          202503038465 (TR0316513-W)), a business registered in Malaysia with
+          its address at 74, Lorong Bawal Tambak, Taman Gadung Permai 1A, 41100 Klang, Selangor, Malaysia (&quot;Phyto Link
           Venture&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;).
         </p>
         <p>
@@ -450,8 +450,8 @@ const sections: LegalSection[] = [
       <>
         <p>For any question or request about this policy or your personal data:</p>
         <ul>
-          <li><strong>Phyto Link Venture</strong> (SSM registration no. <Placeholder>[Company registration no.]</Placeholder>)</li>
-          <li>Address: <Placeholder>[Registered business address]</Placeholder></li>
+          <li><strong>Phyto Link Venture</strong> (SSM registration no. 202503038465 (TR0316513-W))</li>
+          <li>Address: 74, Lorong Bawal Tambak, Taman Gadung Permai 1A, 41100 Klang, Selangor, Malaysia</li>
           <li>Email: <Mail subject="Privacy enquiry" /></li>
           <li>WhatsApp / phone: +60 11-3319 9692</li>
           <li>Business hours: Monday–Friday 9:00 AM–6:00 PM, Saturday 9:00 AM–1:00 PM (Malaysia time)</li>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import LegalPage, { Placeholder, type LegalSection } from "@/components/legal/LegalPage";
+import LegalPage, { type LegalSection } from "@/components/legal/LegalPage";
 
 const EFFECTIVE_DATE = "10 November 2026";
 const EMAIL = "phytolinkventure@gmail.com";
@@ -24,8 +24,8 @@ const sections: LegalSection[] = [
         <p>
           These Terms &amp; Conditions (&quot;Terms&quot;) are an agreement between you and{" "}
           <strong>Phyto Link Venture</strong> (SSM registration no.{" "}
-          <Placeholder>[Company registration no.]</Placeholder>, address{" "}
-          <Placeholder>[Registered business address]</Placeholder>) (&quot;we&quot;, &quot;us&quot;,
+          202503038465 (TR0316513-W), address{" "}
+          74, Lorong Bawal Tambak, Taman Gadung Permai 1A, 41100 Klang, Selangor, Malaysia) (&quot;we&quot;, &quot;us&quot;,
           &quot;our&quot;). They govern your use of our website, <strong>ChatBranch</strong> (including its
           dashboard, phone app, website chat widget, API and MCP server), our IoT System, and related setup and
           support services (the &quot;Services&quot;).
@@ -282,8 +282,8 @@ const sections: LegalSection[] = [
     title: "Contact us",
     content: (
       <ul>
-        <li><strong>Phyto Link Venture</strong> (SSM registration no. <Placeholder>[Company registration no.]</Placeholder>)</li>
-        <li>Address: <Placeholder>[Registered business address]</Placeholder></li>
+        <li><strong>Phyto Link Venture</strong> (SSM registration no. 202503038465 (TR0316513-W))</li>
+        <li>Address: 74, Lorong Bawal Tambak, Taman Gadung Permai 1A, 41100 Klang, Selangor, Malaysia</li>
         <li>Email: <Mail /></li>
         <li>WhatsApp / phone: +60 11-3319 9692</li>
       </ul>

@@ -26,7 +26,7 @@ export const showcaseVideos: ShowcaseVideo[] = [
   {
     file: "hero-16x9.mp4",
     poster: "hero-16x9.jpg",
-    title: "ChatBranch in two minutes",
+    title: "ChatBranch in 45 seconds",
     caption: "Every channel in one inbox, with an AI that answers for you.",
     orientation: "landscape",
   },
@@ -49,6 +49,13 @@ export const showcaseVideos: ShowcaseVideo[] = [
     poster: "short-journeys-9x16.jpg",
     title: "Journeys",
     caption: "Follow-ups, reminders and hand-overs on autopilot.",
+    orientation: "portrait",
+  },
+  {
+    file: "short-claude-9x16.mp4",
+    poster: "short-claude-9x16.jpg",
+    title: "Hands-free with Claude",
+    caption: "Ask about your inboxes and reply by voice, through the ChatBranch connector.",
     orientation: "portrait",
   },
 ];
@@ -82,7 +89,7 @@ export default function VideoShowcase() {
   if (available.length === 0) return null;
 
   const hero = available.find((v) => v.orientation === "landscape");
-  const shorts = available.filter((v) => v.orientation === "portrait").slice(0, 3);
+  const shorts = available.filter((v) => v.orientation === "portrait").slice(0, 4);
 
   return (
     <section id="see-it-in-action" className="py-20 bg-gray-900 text-white">
@@ -106,7 +113,7 @@ export default function VideoShowcase() {
         {shorts.length > 0 && (
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
             {shorts.map((video) => (
-              <figure key={video.file} className="w-full max-w-[300px] sm:w-[calc(33.333%-1.5rem)] sm:max-w-[280px]">
+              <figure key={video.file} className="w-full max-w-[300px] sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] sm:max-w-[260px]">
                 <VideoPlayer video={video} className="w-full aspect-[9/16] rounded-2xl shadow-xl" />
                 <figcaption className="mt-3 text-center">
                   <span className="block font-semibold text-white">{video.title}</span>

@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Phyto Link Venture — marketing site
 
-## Getting Started
+The public site at **https://phytolink-venture.com**. Next.js (App Router) +
+React 19 + Tailwind, built with `output: 'standalone'` so it ships as a single
+container.
 
-First, run the development server:
+Pages: home, `/chatbranch` (+ `/chatbranch/updates`), `/iot-system`, `/tools`
+(+ `/tools/[slug]`), `/contact`, `/signup`, `/privacy`, `/terms`.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production build:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+docker build -t phytolink-website .
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## The ChatBranch live-chat widget
 
-## Learn More
+The chat bubble comes from one script tag in `src/app/layout.tsx`. It sits at the
+**end of `<body>` with `defer`**, and both of those matter:
 
-To learn more about Next.js, take a look at the following resources:
+```tsx
+<script
+  src="https://chatbranch.phytolink-venture.com/api/widget.js"
+  data-token="wgt_…"
+  defer
+/>
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `widget.js` mounts itself with `document.body.appendChild(...)` the moment it
+  executes, and reads its own `data-token` off `document.currentScript`.
+- **Do not use `async`.** React 19 treats `<script async src>` as a hoistable
+  element and moves it into `<head>`, where on a warm cache it can execute before
+  `<body>` exists — `document.body` is then `null`, the script throws, and there
+  is no chat bubble at all. Intermittent and easy to miss.
+- `defer` stays non-blocking, is not hoisted, and runs after parsing.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To check a build, the tag must appear *after* `</head>` in the served HTML:
 
-## Deploy on Vercel
+```bash
+curl -s https://phytolink-venture.com/ | grep -o '<script[^>]*widget\.js[^>]*>'
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The token is a **public** widget token — it ships in the page by design and is
+not a secret. The widget's appearance, greeting and AI behaviour are configured
+in ChatBranch, not here.

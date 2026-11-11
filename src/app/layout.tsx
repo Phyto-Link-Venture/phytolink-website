@@ -35,6 +35,16 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {/* ChatBranch live chat assistant. Keep it here at the end of <body>
+            and keep `defer`, not `async`: widget.js mounts itself with
+            document.body.appendChild the moment it runs, and React hoists an
+            `async` script into <head>, where it can run before <body> exists
+            and silently fail. `defer` runs after parsing, still non-blocking. */}
+        <script
+          src="https://chatbranch.phytolink-venture.com/api/widget.js"
+          data-token="wgt_3a9e5c527bf7c91889fbee4d"
+          defer
+        />
       </body>
     </html>
   );

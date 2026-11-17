@@ -34,6 +34,6 @@ export const CHATBRANCH_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How much does ChatBranch cost?",
-    a: "Pricing depends on the channels you connect, the size of your team and how much AI usage you need. Book a free 15-minute demo or WhatsApp us at +60 11-3319 9692 for a quote. Setup of your channels and AI is done for you.",
+    a: "ChatBranch starts from RM100 per month. The final price depends on the channels you connect, the size of your team and how much AI usage you need, and setup of your channels and AI is done for you. Meta's own WhatsApp message fees, where they apply, are billed separately. Book a free 15-minute demo or WhatsApp us at +60 11-3319 9692 for an exact quote.",
   },
 ];

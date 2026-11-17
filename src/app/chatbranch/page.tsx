@@ -164,6 +164,19 @@ export default function ChatBranchPage() {
     image: `${SITE_URL}/videos/chatbranch/hero-16x9.jpg`,
     publisher: { "@id": `${SITE_URL}/#org` },
     areaServed: "MY",
+    offers: {
+      "@type": "Offer",
+      price: "100",
+      priceCurrency: "MYR",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: "100",
+        priceCurrency: "MYR",
+        unitText: "month",
+        description: "Starting price; depends on channels, team size and AI usage. Setup included.",
+      },
+      url: `${SITE_URL}/contact`,
+    },
     availableLanguage: ["English", "Malay", "Chinese"],
     featureList: [
       ...channels.map((c) => `${c.name} in one shared inbox`),
@@ -226,7 +239,7 @@ export default function ChatBranchPage() {
             </a>
           </div>
           <p className="mt-4 text-purple-200 text-sm">
-            Free 15-minute demo • Set up for you •{" "}
+            From RM100/month • Free 15-minute demo • Set up for you •{" "}
             <Link href="/chatbranch/updates" className="underline hover:text-white">
               See what&apos;s new
             </Link>

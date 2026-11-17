@@ -93,7 +93,7 @@ const faqs = [
   },
   {
     q: "How is ChatBranch priced compared with respond.io and SleekFlow?",
-    a: "respond.io and SleekFlow publish self-serve plans that charge by seats and monthly active contacts, with WhatsApp's own message fees on top. ChatBranch is quoted per business after a free 15-minute demo, based on the channels you connect, your team size and your AI usage, and includes setup. Always check each vendor's current pricing page.",
+    a: "respond.io and SleekFlow publish self-serve plans that charge by seats and monthly active contacts, with WhatsApp's own message fees on top. ChatBranch starts from RM100 per month, with setup done for you; the final price depends on the channels you connect, your team size and your AI usage. Always check each vendor's current pricing page.",
   },
   {
     q: "Can I move from respond.io or SleekFlow to ChatBranch?",
@@ -157,7 +157,7 @@ export default function ComparePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-4">The short answer</h2>
           <p className="text-lg text-gray-700">
             <strong>ChatBranch</strong> is a multi-channel inbox with an AI agent, built in Malaysia and set up
-            for you, that also handles Shopee, Lazada and TikTok Shop chats and AI phone calls.{" "}
+            for you, that also handles Shopee, Lazada and TikTok Shop chats and AI phone calls, from RM100 per month.{" "}
             <strong>respond.io</strong> and <strong>SleekFlow</strong> are established self-serve platforms sold
             across many countries, priced by seats and monthly active contacts. If you want a local team to set it
             up and support you in BM, Chinese and English, ChatBranch is the closer fit.

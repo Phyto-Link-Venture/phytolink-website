@@ -30,6 +30,7 @@ Key facts:
 - WhatsApp: official WhatsApp Cloud API (direct or via Twilio/YCloud), or linking an existing number by QR code (companion device, not an official Meta API).
 - Developers: an MCP server with OAuth sign-in exposing every dashboard feature to AI apps such as Claude, plus a REST API with API keys; integrations with Google, Shopify and Stripe.
 - Suits clinics and wellness, retail and e-commerce, property and services, F&B and hospitality.
+- Price: from RM100 per month (depends on channels, team size and AI usage; setup included; Meta's WhatsApp message fees billed separately where they apply).
 - Onboarding: free 15-minute demo, then the team connects the channels and sets up the AI for the customer.
 
 - [ChatBranch product page](${SITE_URL}/chatbranch): features, WhatsApp options, industries

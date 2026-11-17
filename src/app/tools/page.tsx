@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Free Online Tools — EPF/KWSP Calculators, JSON to Chart, WebSocket Tester | Phyto Link Venture",
+  description: "Free browser tools from Phyto Link Venture: EPF and KWSP retirement calculators for Malaysians, a JSON-to-chart converter, a WebSocket tester and setup guides. No sign-up.",
+  alternates: { canonical: "/tools" },
+};
+
 import Link from "next/link";
 
 const tools = [

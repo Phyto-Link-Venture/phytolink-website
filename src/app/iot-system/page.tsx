@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "IoT Monitoring System (ThingsBoard) for Malaysian Businesses | Phyto Link Venture",
+  description: "Real-time IoT device monitoring powered by ThingsBoard: custom dashboards, rule engine and alerts, data analytics, REST API and MQTT. Coming soon from Phyto Link Venture, Malaysia.",
+  alternates: { canonical: "/iot-system" },
+};
+
 import Link from "next/link";
 
 export default function IoTSystemPage() {

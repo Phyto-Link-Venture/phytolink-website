@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
 import Link from "next/link";
 import UpdateCard from "@/components/chatbranch/UpdateCard";
 import { getLatestUpdates } from "@/data/chatbranch-updates";

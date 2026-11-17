@@ -1,18 +1,24 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { SITE_URL, TOOLS, jsonLd } from "@/lib/site";
 
-const tools: Record<string, { name: string; file: string }> = {
-  "epf-calculator": { name: "EPF + Investment Calculator", file: "epf-calculator.html" },
-  "kwsp-calculator": { name: "KWSP Projection Calculator", file: "kwsp-calculator.html" },
-  "airdrop-calculator": { name: "Airdrop Strategy Calculator", file: "airdrop-calculator.html" },
-  "json-to-chart": { name: "JSON to Chart Tool", file: "json-to-chart.html" },
-  "websocket-tester": { name: "WebSocket Tester", file: "websocket-tester.html" },
-  "auto-rotator": { name: "Auto Rotator", file: "auto-rotator.html" },
-  "n8n-odoo-setup": { name: "n8n + Odoo Setup Guide", file: "n8n-odoo-setup.html" },
-};
+const tools = TOOLS;
 
 export function generateStaticParams() {
   return Object.keys(tools).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const tool = tools[slug];
+  if (!tool) return {};
+  return {
+    title: `${tool.name} — Free Online Tool | Phyto Link Venture`,
+    description: tool.description,
+    alternates: { canonical: `/tools/${slug}` },
+    openGraph: { title: tool.name, description: tool.description, url: `/tools/${slug}` },
+  };
 }
 
 export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -20,8 +26,22 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   const tool = tools[slug];
   if (!tool) notFound();
 
+  const toolLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: tool.name,
+    description: tool.description,
+    url: `${SITE_URL}/tools/${slug}`,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any (runs in the browser)",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "MYR" },
+    publisher: { "@id": `${SITE_URL}/#org` },
+  };
+
   return (
     <div className="pt-16 bg-gray-50 min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(toolLd)} />
       {/* Header bar */}
       <div className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -45,6 +65,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           </a>
         </div>
       </div>
+
+      {/* Crawlable summary: the tool itself lives in an iframe, which search engines and AI assistants don't attribute to this page. */}
+      <p className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-sm text-gray-600">{tool.description}</p>
 
       {/* Tool iframe */}
       <iframe

@@ -3,6 +3,7 @@ import Link from "next/link";
 import VideoShowcase from "@/components/chatbranch/VideoShowcase";
 import UpdateCard from "@/components/chatbranch/UpdateCard";
 import { getLatestUpdates } from "@/data/chatbranch-updates";
+import { SITE_URL, jsonLd } from "@/lib/site";
 
 const APP_URL = "https://chatbranch.phytolink-venture.com";
 const WHATSAPP_URL = "https://wa.me/601133199692?text=Hi%2C%20I%27m%20interested%20in%20ChatBranch";
@@ -144,11 +145,92 @@ const industries = [
   },
 ];
 
+const faqs = [
+  {
+    q: "What is ChatBranch?",
+    a: "ChatBranch is a shared inbox built in Malaysia that brings WhatsApp, email, Facebook Messenger, Instagram, Telegram, LINE, Viber, SMS, WeChat, Zalo and website chat into one place, with an AI that answers customers 24/7 and hands the conversation to your staff when a person is needed.",
+  },
+  {
+    q: "Does ChatBranch use the official WhatsApp Business API?",
+    a: "Yes. ChatBranch connects to Meta's official WhatsApp Cloud API, directly or through providers such as Twilio and YCloud. You can also link an existing WhatsApp number by QR code, which uses WhatsApp's companion-device feature and is not an official Meta API.",
+  },
+  {
+    q: "Can the AI reply in Bahasa Malaysia and Chinese?",
+    a: "Yes. The ChatBranch AI replies in English, Bahasa Malaysia or Chinese, in your own tone, using your price lists, FAQs and documents as its knowledge base.",
+  },
+  {
+    q: "What happens if the AI gives a wrong answer?",
+    a: "You decide how much the AI does on its own: send automatically, review only risky replies, review every reply, or run it in shadow mode. Every thumbs up, thumbs down, edit or rejection from your team becomes a suggested lesson a manager can approve.",
+  },
+  {
+    q: "Can ChatBranch take bookings and appointments?",
+    a: "Yes. The AI offers free time slots, books, reschedules and cancels appointments on Google Calendar or ChatBranch's own calendar, and can attach a Zoom or Google Meet link.",
+  },
+  {
+    q: "Does ChatBranch work for businesses with several branches?",
+    a: "Yes. One account can run several outlets or companies, each with its own inbox, staff, AI persona and rules, and monthly AI usage caps. Staff can be limited to seeing only their own outlet's customers.",
+  },
+  {
+    q: "Can ChatBranch handle Shopee, Lazada and TikTok Shop chats?",
+    a: "Yes. Buyer chats from Shopee, Lazada and TikTok Shop arrive in the same inbox as WhatsApp, email and social messages.",
+  },
+  {
+    q: "Who is ChatBranch for?",
+    a: "Malaysian businesses that talk to customers on several channels — especially clinics and wellness centres, retail and e-commerce sellers, property agencies and service companies, and F&B and hospitality outlets.",
+  },
+  {
+    q: "How much does ChatBranch cost?",
+    a: "Pricing depends on the channels you connect, the size of your team and how much AI usage you need. Book a free 15-minute demo or WhatsApp us at +60 11-3319 9692 for a quote. Setup of your channels and AI is done for you.",
+  },
+];
+
 export default function ChatBranchPage() {
   const latest = getLatestUpdates(3);
 
+  const softwareLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": `${SITE_URL}/chatbranch#software`,
+    name: "ChatBranch",
+    url: `${SITE_URL}/chatbranch`,
+    applicationCategory: "BusinessApplication",
+    applicationSubCategory: "Customer messaging / shared inbox / AI customer service",
+    operatingSystem: "Web, iOS, Android",
+    description: metadata.description,
+    image: `${SITE_URL}/videos/chatbranch/hero-16x9.jpg`,
+    publisher: { "@id": `${SITE_URL}/#org` },
+    areaServed: "MY",
+    availableLanguage: ["English", "Malay", "Chinese"],
+    featureList: [
+      ...channels.map((c) => `${c.name} in one shared inbox`),
+      ...features.map((f) => f.title),
+      ...aiPoints.map((p) => `AI: ${p.title}`),
+      "MCP server and REST API",
+    ],
+    dateModified: latest[0]?.date,
+  };
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "ChatBranch", item: `${SITE_URL}/chatbranch` },
+    ],
+  };
+
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <div className="pt-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd([softwareLd, breadcrumbLd, faqLd])} />
       {/* Hero */}
       <section className="bg-gradient-to-br from-indigo-600 to-purple-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -465,6 +547,26 @@ export default function ChatBranchPage() {
                 <p className="text-gray-600">Start in review mode, approve the AI&apos;s replies while it learns, then let it handle the routine questions on its own.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ — plain question/answer text so search engines and AI assistants can quote it. Keep in sync with faqLd (it is generated from the same list). */}
+      <section id="faq" className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((f) => (
+              <details key={f.q} className="group bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <summary className="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-900 text-lg">
+                  {f.q}
+                  <span className="ml-4 text-indigo-500 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                </summary>
+                <p className="mt-4 text-gray-600">{f.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

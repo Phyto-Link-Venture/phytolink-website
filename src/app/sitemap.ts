@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/", 1),
     page("/chatbranch", 0.9),
     page("/chatbranch/updates", 0.7),
+    page("/chatbranch/respond-io-sleekflow-alternative", 0.7),
     page("/iot-system", 0.5),
     page("/tools", 0.6),
     ...Object.keys(TOOLS).map((slug) => page(`/tools/${slug}`, 0.5)),

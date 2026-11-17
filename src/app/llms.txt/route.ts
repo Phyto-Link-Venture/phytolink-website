@@ -1,5 +1,6 @@
 import { CHATBRANCH_APP_URL, ORG, SITE_URL, TOOLS } from "@/lib/site";
 import { getUpdates } from "@/data/chatbranch-updates";
+import { CHATBRANCH_FAQS } from "@/data/chatbranch-faqs";
 
 // llms.txt (https://llmstxt.org): a plain-Markdown summary for AI assistants.
 // Built from the same data as the site so it never drifts.
@@ -33,8 +34,14 @@ Key facts:
 
 - [ChatBranch product page](${SITE_URL}/chatbranch): features, WhatsApp options, industries
 - [What's new in ChatBranch](${SITE_URL}/chatbranch/updates): dated changelog
-- [ChatBranch help centre](${CHATBRANCH_APP_URL}/help): how-to guides
+- [ChatBranch vs respond.io vs SleekFlow](${SITE_URL}/chatbranch/respond-io-sleekflow-alternative): how ChatBranch differs and when each fits
+- [ChatBranch user manual](${CHATBRANCH_APP_URL}/help/manual): every feature step by step, troubleshooting, glossary
+- [ChatBranch help centre](${CHATBRANCH_APP_URL}/help): help articles
 - [ChatBranch app](${CHATBRANCH_APP_URL}): sign in
+
+## Frequently asked questions
+
+${CHATBRANCH_FAQS.map((f) => `### ${f.q}\n\n${f.a}`).join("\n\n")}
 
 ## Recent ChatBranch updates
 

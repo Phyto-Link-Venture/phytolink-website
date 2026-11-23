@@ -68,8 +68,16 @@ function publicFileExists(name: string): boolean {
   }
 }
 
+// Prefer a same-named .webp next to the .jpg poster (about half the bytes);
+// fall back to the .jpg so dropping in only a .jpg keeps working.
+function posterUrl(jpg: string): string | undefined {
+  const webp = jpg.replace(/\.jpe?g$/i, ".webp");
+  if (webp !== jpg && publicFileExists(webp)) return `${VIDEO_DIR}/${webp}`;
+  return publicFileExists(jpg) ? `${VIDEO_DIR}/${jpg}` : undefined;
+}
+
 function VideoPlayer({ video, className }: { video: ShowcaseVideo; className: string }) {
-  const poster = publicFileExists(video.poster) ? `${VIDEO_DIR}/${video.poster}` : undefined;
+  const poster = posterUrl(video.poster);
   return (
     <video
       controls
